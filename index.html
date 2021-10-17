@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/2ae3d61eb4.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Password Strength Indicator</title>
+</head>
+<body>
+    <div class="container"> 
+        <div class="input-box">
+            <div class="text-center">
+                <img src="login.png" alt="">
+            </div>
+            
+                <input type="text" id="details" placeholder="Enter name">
+                <input type="password" id="password" placeholder="Password">
+                <button type="submit"></button>
+                <p id="message">Password is <span id="strength"></span> </p>
+                <br>
+                <div class="text-center">
+                    <a href="#" class="btn btn-primary">Log In</a>
+                </div>
+            </div>
+    </div>
+    <script>
+        var pass=document.getElementById("password");
+        var msg=document.getElementById("message");
+        var str=document.getElementById("strength");
+        pass.addEventListener('input', ()=>{
+            if(pass.value.length > 0)
+            {
+                msg.style.display="block";
+            }
+            else{
+                msg.style.display="none";
+            }
+            if(pass.value.length < 6){
+                str.innerHTML="weak";
+                pass.style.borderColor="red";
+                msg.style.color="red";
+            }
+            else if(pass.value.length >=6 && pass.value.length < 9){
+                str.innerHTML="medium";
+                pass.style.borderColor="yellow";
+                msg.style.color="yellow";
+            }
+            else if(pass.value.length >= 10){
+                str.innerHTML="strong";
+                pass.style.borderColor="green";
+                msg.style.color="green";
+            }
+        })
+    </script>
+</body>
+</html>
